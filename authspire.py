@@ -4,7 +4,8 @@ import random
 import json
 import uuid
 import os
-from subprocess import call, check_call, CalledProcessError, check_output
+import webbrowser
+from subprocess import CalledProcessError, check_output
 from base64 import b64encode, b64decode
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
@@ -327,10 +328,13 @@ class api:
         except CalledProcessError as e:
             print(e)
 
+       
         try:
-            call(["start", url])
-        except CalledProcessError as e:
+            webbrowser.open(url)
+            exit(0)
+        except Exception as e:
             print(e)
+            exit(0)
 
 class util:
     def get_hwid():
