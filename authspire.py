@@ -85,6 +85,8 @@ class api:
             return False
         elif response["status"] == "invalid_hash":
             self.error(ApplicationManipulated)
+        elif response["status"] == "invalid_app":
+            self.error(InvalidApplication)
         elif response["status"] == "paused":
             self.error(ApplicationPaused)
         elif response["status"] == "locked":
